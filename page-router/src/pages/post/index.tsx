@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import Layout from "@/components/Layout";
 
 export interface IPost {
@@ -28,15 +29,14 @@ export default function PostPage(props: IPostList) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 cursor-pointer">
           {currentPosts.map((post) => (
-            <div
-              key={post.id}
-              className="bg-white shadow-md rounded-2xl p-5 hover:shadow-xl transition-shadow min-h-[240px]"
-            >
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">
-                {post.title}
-              </h2>
-              <p className="text-gray-600 text-sm">{post.body}</p>
-            </div>
+            <Link key={post.id} href={`/post/${post.id}`}>
+              <div className="bg-white shadow-md rounded-2xl p-5 hover:shadow-xl transition-shadow min-h-[240px]">
+                <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                  {post.title}
+                </h2>
+                <p className="text-gray-600 text-sm">{post.body}</p>
+              </div>
+            </Link>
           ))}
         </div>
 
