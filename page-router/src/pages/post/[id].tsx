@@ -29,7 +29,7 @@ export default function PostDetailPage(props: PropsType) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
   const postList = await res.json();
 
   return {
